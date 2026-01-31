@@ -1,11 +1,13 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { registerDecorator, ValidationArguments, ValidationOptions, ValidatorConstraint, ValidatorConstraintInterface } from "class-validator";
 import { GetUserByEmail } from "src/domain/usecases/user/get-user-by-email.usecase";
 
 @Injectable()
 @ValidatorConstraint()
 export class UniqueEmailValidator implements ValidatorConstraintInterface {
-    constructor(private readonly getUserByEmail: GetUserByEmail) {}
+    constructor(
+        private readonly getUserByEmail: GetUserByEmail,
+    ) {}
 
     async validate(email: string, args?: ValidationArguments): Promise<boolean> {
         const user = await this.getUserByEmail.execute(email);

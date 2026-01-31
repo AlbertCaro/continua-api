@@ -7,6 +7,10 @@ import { UniqueCodeValidator } from "src/infraestructure/user/validation/unique-
 import { CommonModule } from "./common.module";
 import { GetUserByEmail } from "src/domain/usecases/user/get-user-by-email.usecase";
 import { UniqueEmailValidator } from "src/infraestructure/user/validation/unique-email.validator";
+import { GetUserById } from "src/domain/usecases/user/get-user-by-id.usecase";
+import { GetAllUsers } from "src/domain/usecases/user/get-all-users.usecase";
+import { UpdateUser } from "src/domain/usecases/user/update-user.usecase";
+import { DeleteUser } from "src/domain/usecases/user/delete-user.usecase";
 
 @Module({
     imports: [CommonModule],
@@ -15,9 +19,17 @@ import { UniqueEmailValidator } from "src/infraestructure/user/validation/unique
         CreateUser,
         GetUserByCode,
         GetUserByEmail,
+        GetUserById,
+        GetAllUsers,
+        UpdateUser,
+        DeleteUser,
         UniqueCodeValidator,
         UniqueEmailValidator,
     ],
-    controllers: [UserController]
+    controllers: [UserController],
+    exports: [
+        GetUserByEmail,
+        GetUserById,
+    ]
 })
 export class UserModule {}

@@ -4,28 +4,36 @@ import { IsNotEmpty } from "class-validator";
 import { PasswordMatch } from "../validation/password.validator";
 import { UniqueCode } from "../validation/unique-code.validator";
 import { UniqueEmail } from "../validation/unique-email.validator";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class UserWriteDto {
+    @ApiProperty({ example: 'Alberto' })
     @IsNotEmpty()
     names: string;
-
+    
+    @ApiProperty({ example: 'Caro' })
     @IsNotEmpty()
     lastName: string;
     
+    @ApiProperty({ example: 'albertcaro@gmail.com' })
     @IsNotEmpty()
     @UniqueEmail()
     email: string;
-
+    
+    @ApiProperty({ example: 'hola123' })
     @IsNotEmpty()
     @PasswordMatch()
     password: string;
-
+    
+    @ApiProperty({ example: 'hola123' })
     @IsNotEmpty()
     confirmPassword: string;
-
+    
+    @ApiProperty({ example: Role.STUDENT })
     @IsNotEmpty()
     role: Role;
-
+    
+    @ApiProperty({ example: 215818158 })
     @IsNotEmpty()
     @UniqueCode()
     code: number;
