@@ -7,7 +7,7 @@ import { Comprobante } from './entity/receipt.entity';
 
 export const DataSourceConfig: DataSourceOptions = {
   type: 'mysql',
-  host: 'localhost',
+  host: 'mysql',
   port: 3306,
   username: 'root',
   password: 'picapapas',
