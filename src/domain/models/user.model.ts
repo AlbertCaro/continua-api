@@ -1,48 +1,60 @@
-import { Usuario } from "src/data/database/entity/user.entity";
-import { Role } from "./role.enum";
-import { UserReadDto } from "src/infraestructure/user/dto/user-read.dto";
+import { Usuario } from 'src/data/database/entity/user.entity';
+import { Role } from './role.enum';
+import { UserReadDto } from 'src/infraestructure/user/dto/user-read.dto';
+import { Course } from './course.model';
+import { Enrollment } from './enrollment.model';
 
 export class User {
-    id: number;
+  id: number;
 
-    names: string;
+  names: string;
 
-    lastName: string;
+  lastName: string;
 
-    email: string;
+  email: string;
 
-    password: string;
+  password: string;
 
-    role: Role;
+  role: Role;
 
-    code: number;
+  code: number;
 
-    toEntity() {
-        const entity = new Usuario();
-        
-        entity.id = this.id;
-        entity.nombres = this.names;
-        entity.apellidos = this.lastName;
-        entity.correo = this.email;
-        entity.password = this.password;
-        entity.rol = this.role;
-        entity.codigo = this.code;
+  courses: Course[] = [];
 
-        return entity;
-    }
+  enrollments: Enrollment[] = [];
 
-    
+  toDatabase() {
+    const entity = new Usuario();
 
-    toRead() {
-        const dto = new UserReadDto();
-        
-        dto.id = this.id;
-        dto.names = this.names;
-        dto.lastName = this.lastName;
-        dto.email = this.email;
-        dto.role = this.role;
-        dto.code = this.code;
+    entity.id = this.id;
+    entity.nombres = this.names;
+    entity.apellidos = this.lastName;
+    entity.correo = this.email;
+    entity.password = this.password;
+    entity.rol = this.role;
+    entity.codigo = this.code;
 
-        return dto;
-    }
+    entity.cursosCoordinados = this.courses.map((course) =>
+      course.toDatabase(),
+    );
+
+    entity.inscripciones = this.enrollments.map((enrollment) =>
+      enrollment.toDatabase(),
+    );
+
+    return entity;
+  }
+
+  toRead() {
+    const dto = new UserReadDto();
+
+    dto.id = this.id;
+    dto.names = this.names;
+    dto.lastName = this.lastName;
+    dto.email = this.email;
+    dto.role = this.role;
+    dto.code = this.code;
+
+    return dto;
+  }
 }
