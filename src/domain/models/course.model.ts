@@ -1,8 +1,10 @@
 import { Curso } from 'src/data/database/entity/course.entity';
 import { User } from './user.model';
 import { Enrollment } from './enrollment.model';
+import { CourseDto } from 'src/infraestructure/course/dto/course.dto';
 
 export class Course {
+  b;
   id?: number;
 
   name: string;
@@ -68,11 +70,43 @@ export class Course {
     entity.img = this.img;
     entity.estatus = this.status;
 
-    entity.coordinador = this.coordinator.toDatabase();
-    entity.inscripciones = this.enrollments.map((enrollment) =>
-      enrollment.toDatabase(),
-    );
+    if (this.coordinator) {
+      entity.coordinador = this.coordinator.toDatabase();
+    }
+
+    if (this.enrollments) {
+      entity.inscripciones = this.enrollments.map((enrollment) =>
+        enrollment.toDatabase(),
+      );
+    }
 
     return entity;
+  }
+
+  toDto() {
+    const dto = new CourseDto();
+
+    dto.id = this.id;
+    dto.name = this.name;
+    dto.shortDescription = this.shortDescription;
+    dto.description = this.description;
+    dto.objetives = this.objetives;
+    dto.duration = this.duration;
+    dto.startDate = this.startDate;
+    dto.endDate = this.endDate;
+    dto.effort = this.effort;
+    dto.initialCost = this.initialCost;
+    dto.finalCost = this.finalCost;
+    dto.topic = this.topic;
+    dto.nive = this.nive;
+    dto.capacity = this.capacity;
+    dto.payment = this.payment;
+    dto.document = this.document;
+    dto.info = this.info;
+    dto.img = this.img;
+    dto.status = this.status;
+    dto.coordinator = this.coordinator.id!!;
+
+    return dto;
   }
 }

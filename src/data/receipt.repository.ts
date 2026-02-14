@@ -6,7 +6,7 @@ import { Receipt } from 'src/domain/models/receipt.model';
 export class ReceiptRepository {
   async fetchByPaymentId(id: number) {
     // SELECT * FROM comprobantes LEFT JOIN pagos ON ... WHERE pagos.id = ?
-    const receipt = await Comprobante.findOneOrFail({
+    const receipt = await Comprobante.findOne({
       where: { pago: { id } },
     });
 

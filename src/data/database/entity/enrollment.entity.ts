@@ -23,7 +23,7 @@ export class Inscripcion extends BaseEntity {
   @Column({ type: 'datetime' })
   fecha: Date;
 
-  @Column({ type: 'float', precision: 2, scale: 2 })
+  @Column({ type: 'float' })
   precio: number;
 
   @ManyToOne(() => Usuario, (usuario: Usuario) => usuario.inscripciones)
@@ -44,9 +44,18 @@ export class Inscripcion extends BaseEntity {
     model.reasons = this.motivos;
     model.date = this.fecha;
     model.price = this.precio;
-    model.student = this.alumno.toDomain();
-    model.course = this.curso.toDomain();
-    model.payments = this.pagos.map((pago) => pago.toDomain());
+
+    if (this.alumno) {
+      model.student = this.alumno.toDomain();
+    }
+
+    if (this.curso) {
+      model.course = this.curso.toDomain();
+    }
+
+    if (this.pagos) {
+      model.payments = this.pagos.map((pago) => pago.toDomain());
+    }
 
     return model;
   }

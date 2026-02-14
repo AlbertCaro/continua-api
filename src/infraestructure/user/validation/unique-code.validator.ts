@@ -19,9 +19,6 @@ export class UniqueCodeValidator implements ValidatorConstraintInterface {
 
     const body: UserWriteDto = args?.object as any;
 
-    console.log(body);
-    console.log(user);
-
     if (user?.id == body.id) {
       return true;
     }

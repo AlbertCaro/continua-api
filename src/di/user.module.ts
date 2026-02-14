@@ -11,6 +11,7 @@ import { GetUserById } from 'src/domain/usecases/user/get-user-by-id.usecase';
 import { GetAllUsers } from 'src/domain/usecases/user/get-all-users.usecase';
 import { UpdateUser } from 'src/domain/usecases/user/update-user.usecase';
 import { DeleteUser } from 'src/domain/usecases/user/delete-user.usecase';
+import { IsUserIdValidator } from 'src/infraestructure/user/validation/is-user-id.validator';
 
 @Module({
   imports: [CommonModule],
@@ -25,8 +26,9 @@ import { DeleteUser } from 'src/domain/usecases/user/delete-user.usecase';
     DeleteUser,
     UniqueCodeValidator,
     UniqueEmailValidator,
+    IsUserIdValidator,
   ],
   controllers: [UserController],
-  exports: [GetUserByEmail, GetUserById],
+  exports: [GetUserByEmail, GetUserById, IsUserIdValidator],
 })
 export class UserModule {}

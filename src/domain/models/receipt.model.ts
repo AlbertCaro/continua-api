@@ -8,7 +8,7 @@ export class Receipt {
 
   fileType: string;
 
-  content: string;
+  content: Buffer;
 
   payment: Payment;
 
@@ -19,7 +19,10 @@ export class Receipt {
     entity.nombreArchivo = this.fileName;
     entity.tipoArchivo = this.fileType;
     entity.contenido = this.content;
-    entity.pago = this.payment.toDatabase();
+
+    if (this.payment) {
+      entity.pago = this.payment.toDatabase();
+    }
 
     return entity;
   }

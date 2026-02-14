@@ -24,6 +24,7 @@ export class UserRepository {
     return (
       await Usuario.findOne({
         where: { id },
+        relations: ['inscripciones'],
       })
     )?.toDomain(); // SELECT * FROM usuario WHERE id = ?
   }

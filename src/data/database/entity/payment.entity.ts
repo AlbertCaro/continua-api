@@ -16,10 +16,13 @@ export class Pago extends BaseEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
+  @Column({ type: 'date', nullable: false })
+  fecha: Date;
+
   @Column({ length: 45 })
   banco: string;
 
-  @Column({ type: 'float', precision: 2, scale: 2 })
+  @Column({ type: 'float', precision: 10, scale: 2 })
   monto: number;
 
   @ManyToOne(() => Inscripcion, (inscripcion: Inscripcion) => inscripcion.pagos)
@@ -35,8 +38,14 @@ export class Pago extends BaseEntity {
     model.id = this.id;
     model.bank = this.banco;
     model.amount = this.monto;
-    model.enrollment = this.inscripcion.toDomain();
-    model.receipt = this.comprobante.toDomain();
+
+    if (this.inscripcion) {
+      model.enrollment = this.inscripcion.toDomain();
+    }
+
+    if (this.comprobante) {
+      model.receipt = this.comprobante.toDomain();
+    }
 
     return model;
   }

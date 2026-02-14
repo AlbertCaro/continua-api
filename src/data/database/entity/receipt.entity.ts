@@ -20,8 +20,8 @@ export class Comprobante extends BaseEntity {
   @Column({ name: 'tipo_archivo', length: 45 })
   tipoArchivo: string;
 
-  @Column({ type: 'longtext' })
-  contenido: string;
+  @Column({ type: 'longblob' })
+  contenido: Buffer;
 
   @OneToOne(() => Pago, (pago: Pago) => pago.comprobante)
   @JoinColumn({ name: 'pago_id' })

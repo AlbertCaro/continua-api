@@ -100,11 +100,15 @@ export class Curso extends BaseEntity {
     model.img = this.img;
     model.status = this.estatus;
 
-    model.coordinator = this.coordinador.toDomain();
+    if (this.coordinador) {
+      model.coordinator = this.coordinador.toDomain();
+    }
 
-    model.enrollments = this.inscripciones.map((inscripciones) =>
-      inscripciones.toDomain(),
-    );
+    if (this.inscripciones) {
+      model.enrollments = this.inscripciones.map((inscripciones) =>
+        inscripciones.toDomain(),
+      );
+    }
 
     return model;
   }

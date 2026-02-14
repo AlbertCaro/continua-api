@@ -55,6 +55,12 @@ export class User {
     dto.role = this.role;
     dto.code = this.code;
 
+    if (this.enrollments) {
+      dto.enrollments = this.enrollments.map((enrollment: Enrollment) =>
+        enrollment.toDto(false),
+      );
+    }
+
     return dto;
   }
 }
