@@ -1,4 +1,3 @@
-import { Payment } from 'src/domain/models/payment.model';
 import { Receipt } from 'src/domain/models/receipt.model';
 
 export class ReceiptDto {

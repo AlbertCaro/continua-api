@@ -87,7 +87,7 @@ export class EnrollmentController {
     const enrollment = await this.deleteEnrollment.execute(id);
 
     if (!enrollment) {
-      throw new NotFoundException('Inscripción no encontrado');
+      throw new NotFoundException('Inscripción no encontrada');
     }
 
     return enrollment.toDto();

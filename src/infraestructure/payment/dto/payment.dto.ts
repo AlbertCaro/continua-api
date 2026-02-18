@@ -1,6 +1,7 @@
 import { ApiHideProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsOptional } from 'class-validator';
 import { Payment } from 'src/domain/models/payment.model';
+import { IsEnrollemntId } from '../../enrollment/validation/is-enrollment-id.validator';
 
 export class PaymentDto {
   @ApiHideProperty()
@@ -8,6 +9,7 @@ export class PaymentDto {
   id: number;
 
   @IsNotEmpty()
+  @IsDateString()
   date: Date;
 
   @IsNotEmpty()
@@ -17,6 +19,7 @@ export class PaymentDto {
   amount: number;
 
   @IsNotEmpty()
+  @IsEnrollemntId()
   enrollment: number;
 
   toDomain() {

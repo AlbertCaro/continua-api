@@ -1,13 +1,9 @@
-import { Module } from "@nestjs/common";
-import { EncrypterService } from "src/core/common/encrypter.service";
+import { Module } from '@nestjs/common';
+import { EncrypterService } from 'src/core/common/encrypter.service';
 
 @Module({
-    providers: [
-        EncrypterService,
-    ],
+  providers: [EncrypterService],
 
-    exports: [
-        EncrypterService,
-    ]
+  exports: [EncrypterService],
 })
 export class CommonModule {}

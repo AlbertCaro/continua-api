@@ -1,5 +1,5 @@
 import { ApiHideProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsOptional } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsOptional } from 'class-validator';
 import { Course } from 'src/domain/models/course.model';
 import { IsUserId } from 'src/infraestructure/user/validation/is-user-id.validator';
 
@@ -24,9 +24,11 @@ export class CourseDto {
   duration: string;
 
   @IsNotEmpty()
+  @IsDateString()
   startDate: Date;
 
   @IsNotEmpty()
+  @IsDateString()
   endDate: Date;
 
   @IsNotEmpty()

@@ -1,16 +1,15 @@
-import { Injectable } from "@nestjs/common";
-import { GetPaymentReceipt } from "./get-payment-receipt.usecase";
-import { ReceiptRepository } from "src/data/receipt.repository";
+import { Injectable } from '@nestjs/common';
+import { GetPaymentReceipt } from './get-payment-receipt.usecase';
+import { ReceiptRepository } from 'src/data/receipt.repository';
 
 @Injectable()
 export class DeleteReceiptById {
-  constructor (
+  constructor(
     private readonly getPaymentReceipt: GetPaymentReceipt,
-    private readonly repository: ReceiptRepository
-  ) {
-  }
+    private readonly repository: ReceiptRepository,
+  ) {}
 
-  async execute (id: number) {
+  async execute(id: number) {
     const receipt = await this.getPaymentReceipt.execute(id);
 
     if (receipt) {

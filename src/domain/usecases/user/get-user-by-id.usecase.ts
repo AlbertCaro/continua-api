@@ -8,8 +8,6 @@ export class GetUserById {
   async execute(id: number) {
     const user = await this.repository.findById(id);
 
-    console.log(user);
-
     return user;
   }
 }

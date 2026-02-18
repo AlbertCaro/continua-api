@@ -8,6 +8,7 @@ import { GetEnrollmentById } from 'src/domain/usecases/enrollment/get-enrollment
 import { GetAllEnrollments } from 'src/domain/usecases/enrollment/get-all-enrollment.usecase';
 import { UpdateEnrollment } from 'src/domain/usecases/enrollment/update-enrollment.usecase';
 import { DeleteEnrollment } from 'src/domain/usecases/enrollment/delete-enrollment.usecase';
+import { IsEnrollemntIdValidator } from '../infraestructure/enrollment/validation/is-enrollment-id.validator';
 
 @Module({
   imports: [UserModule, CourseModule],
@@ -18,8 +19,9 @@ import { DeleteEnrollment } from 'src/domain/usecases/enrollment/delete-enrollme
     GetAllEnrollments,
     UpdateEnrollment,
     DeleteEnrollment,
+    IsEnrollemntIdValidator,
   ],
   controllers: [EnrollmentController],
-  exports: [GetEnrollmentById],
+  exports: [GetEnrollmentById, IsEnrollemntIdValidator],
 })
 export class EnrollmentModule {}
