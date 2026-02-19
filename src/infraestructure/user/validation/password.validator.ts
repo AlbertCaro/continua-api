@@ -13,7 +13,7 @@ export class PasswordMatchValidator implements ValidatorConstraintInterface {
 
     return password === user.confirmPassword;
   }
-  defaultMessage?(args?: ValidationArguments): string {
+  defaultMessage?(_?: ValidationArguments): string {
     return 'Las contraseñas no coinciden';
   }
 }

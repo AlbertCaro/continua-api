@@ -9,6 +9,8 @@ import { GetAllEnrollments } from 'src/domain/usecases/enrollment/get-all-enroll
 import { UpdateEnrollment } from 'src/domain/usecases/enrollment/update-enrollment.usecase';
 import { DeleteEnrollment } from 'src/domain/usecases/enrollment/delete-enrollment.usecase';
 import { IsEnrollemntIdValidator } from '../infraestructure/enrollment/validation/is-enrollment-id.validator';
+import { IsUniqueEnrollmentValidator } from '../infraestructure/enrollment/validation/is-unique-enrollment.validation';
+import { GetEnrollmentByUserAndCourse } from '../domain/usecases/enrollment/get-enrollment-by-user-and-course.usecase';
 
 @Module({
   imports: [UserModule, CourseModule],
@@ -19,7 +21,9 @@ import { IsEnrollemntIdValidator } from '../infraestructure/enrollment/validatio
     GetAllEnrollments,
     UpdateEnrollment,
     DeleteEnrollment,
+    GetEnrollmentByUserAndCourse,
     IsEnrollemntIdValidator,
+    IsUniqueEnrollmentValidator,
   ],
   controllers: [EnrollmentController],
   exports: [GetEnrollmentById, IsEnrollemntIdValidator],

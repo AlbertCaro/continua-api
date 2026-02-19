@@ -13,7 +13,7 @@ export class Course {
 
   description: string;
 
-  objetives: string;
+  objectives: string;
 
   duration: string;
 
@@ -54,7 +54,7 @@ export class Course {
     entity.nombre = this.name;
     entity.descripcionCorta = this.shortDescription;
     entity.descripcion = this.description;
-    entity.objetivos = this.objetives;
+    entity.objetivos = this.objectives;
     entity.duracion = this.duration;
     entity.inicio = this.startDate;
     entity.fin = this.endDate;
@@ -90,7 +90,7 @@ export class Course {
     dto.name = this.name;
     dto.shortDescription = this.shortDescription;
     dto.description = this.description;
-    dto.objetives = this.objetives;
+    dto.objectives = this.objectives;
     dto.duration = this.duration;
     dto.startDate = this.startDate;
     dto.endDate = this.endDate;
@@ -105,7 +105,7 @@ export class Course {
     dto.info = this.info;
     dto.img = this.img;
     dto.status = this.status;
-    dto.coordinator = this.coordinator.id!!;
+    dto.coordinator = this.coordinator.id!;
 
     return dto;
   }

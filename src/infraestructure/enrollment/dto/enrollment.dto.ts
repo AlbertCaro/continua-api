@@ -4,6 +4,7 @@ import { Enrollment } from 'src/domain/models/enrollment.model';
 import { IsCourseId } from 'src/infraestructure/course/validation/is-course-id.validator';
 import { PaymentDto } from 'src/infraestructure/payment/dto/payment.dto';
 import { IsUserId } from 'src/infraestructure/user/validation/is-user-id.validator';
+import { IsUniqueEnrollment } from '../validation/is-unique-enrollment.validation';
 
 export class EnrollmentDto {
   @ApiHideProperty()
@@ -22,6 +23,7 @@ export class EnrollmentDto {
 
   @IsNotEmpty()
   @IsUserId()
+  @IsUniqueEnrollment()
   student: number;
 
   @IsNotEmpty()

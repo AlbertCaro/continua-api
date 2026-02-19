@@ -84,7 +84,7 @@ export class Curso extends BaseEntity {
     model.name = this.nombre;
     model.shortDescription = this.descripcionCorta;
     model.description = this.descripcion;
-    model.objetives = this.objetivos;
+    model.objectives = this.objetivos;
     model.duration = this.duracion;
     model.startDate = this.inicio;
     model.endDate = this.fin;

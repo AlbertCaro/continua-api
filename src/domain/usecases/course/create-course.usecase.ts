@@ -13,7 +13,7 @@ export class CreateCourse {
   async execute(course: Course, userId: number) {
     const user = await this.getUserById.execute(userId);
 
-    course.coordinator = user!!;
+    course.coordinator = user!;
 
     return await this.repository.create(course);
   }

@@ -16,8 +16,8 @@ export class CreateEnrollment {
     const student = await this.getUserById.execute(studentId);
     const course = await this.getCourseById.execute(studentId);
 
-    enrollment.student = student!!;
-    enrollment.course = course!!;
+    enrollment.student = student!;
+    enrollment.course = course!;
 
     return await this.repository.create(enrollment);
   }

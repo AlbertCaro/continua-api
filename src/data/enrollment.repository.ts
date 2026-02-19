@@ -40,4 +40,12 @@ export class EnrollmentRepository {
 
     await entity.remove();
   }
+
+  async findByUserAndCourse(userId: number, courseId: number) {
+    const entity = await Inscripcion.findOne({
+      where: { alumno: { id: userId }, curso: { id: courseId } },
+    });
+
+    return entity?.toDomain();
+  }
 }

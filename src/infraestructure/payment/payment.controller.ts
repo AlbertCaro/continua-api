@@ -30,7 +30,7 @@ import { DeleteReceiptById } from 'src/domain/usecases/payment/delete-receipt-by
 
 @UseGuards(AuthGuard('jwt'), RoleGuard)
 @Controller('payments')
-@Auth(Role.ADMINISTRATOR)
+@Auth(Role.ADMINISTRATOR, Role.STUDENT)
 export class PaymentController {
   constructor(
     private readonly createPayment: CreatePayment,

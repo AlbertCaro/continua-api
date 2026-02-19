@@ -12,6 +12,7 @@ import { GetAllUsers } from 'src/domain/usecases/user/get-all-users.usecase';
 import { UpdateUser } from 'src/domain/usecases/user/update-user.usecase';
 import { DeleteUser } from 'src/domain/usecases/user/delete-user.usecase';
 import { IsUserIdValidator } from 'src/infraestructure/user/validation/is-user-id.validator';
+import { GetLoggedUser } from '../domain/usecases/user/get-logged-user.usecase';
 
 @Module({
   imports: [CommonModule],
@@ -24,11 +25,12 @@ import { IsUserIdValidator } from 'src/infraestructure/user/validation/is-user-i
     GetAllUsers,
     UpdateUser,
     DeleteUser,
+    GetLoggedUser,
     UniqueCodeValidator,
     UniqueEmailValidator,
     IsUserIdValidator,
   ],
   controllers: [UserController],
-  exports: [GetUserByEmail, GetUserById, IsUserIdValidator],
+  exports: [GetUserByEmail, GetUserById, IsUserIdValidator, GetLoggedUser],
 })
 export class UserModule {}

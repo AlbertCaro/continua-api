@@ -37,6 +37,7 @@ export class CourseController {
   ) {}
 
   @Get()
+  @Auth(Role.COORDINATOR)
   async getAll() {
     const courses = await this.getAllCourses.execute();
 

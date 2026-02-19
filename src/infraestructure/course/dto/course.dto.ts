@@ -18,7 +18,7 @@ export class CourseDto {
   description: string;
 
   @IsNotEmpty()
-  objetives: string;
+  objectives: string;
 
   @IsNotEmpty()
   duration: string;
@@ -75,7 +75,7 @@ export class CourseDto {
     model.name = this.name;
     model.shortDescription = this.shortDescription;
     model.description = this.description;
-    model.objetives = this.objetives;
+    model.objectives = this.objectives;
     model.duration = this.duration;
     model.startDate = this.startDate;
     model.endDate = this.endDate;

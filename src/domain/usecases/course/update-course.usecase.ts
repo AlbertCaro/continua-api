@@ -22,7 +22,7 @@ export class UpdateCourse {
     course.name = data.name;
     course.shortDescription = data.shortDescription;
     course.description = data.description;
-    course.objetives = data.objetives;
+    course.objectives = data.objectives;
     course.duration = data.duration;
     course.startDate = data.startDate;
     course.endDate = data.endDate;
@@ -40,7 +40,7 @@ export class UpdateCourse {
 
     const user = await this.getUserById.execute(userId);
 
-    course.coordinator = user!!;
+    course.coordinator = user!;
 
     await this.repository.update(course);
 
